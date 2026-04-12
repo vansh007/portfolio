@@ -25,16 +25,9 @@ interface BlogCardProps {
 
 // Helper function to get blog image path
 const getBlogImagePath = (slug: string): string => {
-    const imageMap: Record<string, string> = {
-        "gen-ai-roadmap": "/blog/genai.png",
-        "go-concurrency-patterns": "/blog/go-routines/thumbnail.png",
-        "human-in-the-loop": "/blog/human-in-loop/humaninloop.png",
-        "nodejs-multithreading": "/blog/nodejs-multithreading/thumbnail.png",
-        "rest-api-design": "/blog/rest-api-design/thumbnail.png",
-        "test-driven-development": "/blog/test-driven-development/thumbnail.png",
-        "agentic-ai": "/blog/agentic-ai/thumbnail.png"
-    };
-    return imageMap[slug] || "/blog/genai.png"; // fallback to genai.png
+    // We prioritize hero.png in the blog's specific folder
+    // This allows us to avoid hardcoding every new post
+    return `/blog/${slug}/hero.png`;
 };
 
 export default function BlogCard({

@@ -2,7 +2,7 @@ import HeroSection from "@/components/sections/hero-section";
 
 import ProjectsSection from "@/components/sections/projects-section";
 import ExperienceSection from "@/components/sections/experience-section-new";
-import LearningSection from "@/components/sections/learning-section";
+import GithubActivity from "@/components/sections/github-activity";
 import FeaturedBlogs from "@/components/sections/featured-blogs";
 import FloatingNav from "@/components/floating-nav";
 import { getAllPosts } from "@/lib/blog";
@@ -17,8 +17,8 @@ export default function Home() {
       <HeroSection />
       <ExperienceSection />
       <ProjectsSection />
+      <GithubActivity />
       <FeaturedBlogs posts={posts} />
-      <LearningSection />
 
       <FloatingNav />
     </main>

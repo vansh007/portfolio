@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
+import { githubConfig } from "@/data/github";
 
 export async function GET() {
     try {
-        const username = "vanshmundhra9120"; // Your GitHub username
+        const username = githubConfig.username; // Use configured username
         const token = process.env.GITHUB_TOKEN;
 
         const headers: HeadersInit = {
@@ -106,9 +107,29 @@ export async function GET() {
                 }
             }
         } else {
-            // Generate mock data if no token
-            contributions.push(...generateMockContributions());
-            totalContributions = contributions.reduce((sum, day) => sum + day.count, 0);
+            // Generate real data from public fallback if no token
+            try {
+                const publicApiUrl = `https://github-contributions-api.deno.dev/${username}.json`;
+                const publicResponse = await fetch(publicApiUrl, { next: { revalidate: 3600 } });
+                if (publicResponse.ok) {
+                    const publicData = await publicResponse.json();
+                    
+                    // The public API returns an array or object, we need to map it to our format
+                    // Depending on the API, structure might vary. 
+                    // Usually it's { contributions: [ { date, count, level } ] }
+                    if (publicData.contributions) {
+                        contributions.push(...publicData.contributions);
+                        totalContributions = publicData.totalContributions || contributions.reduce((sum, day) => sum + day.count, 0);
+                    }
+                }
+            } catch (fallbackError) {
+                console.error("Public GitHub API fallback failed:", fallbackError);
+            }
+        }
+
+        // If we still have no contributions, we won't return mock data anymore to avoid "fake metrics"
+        if (contributions.length === 0) {
+           throw new Error("Could not fetch genuine GitHub data");
         }
 
         // Calculate streak (simplified - you can enhance this)
@@ -138,42 +159,12 @@ export async function GET() {
     } catch (error) {
         console.error("Error fetching GitHub stats:", error);
 
-        // Return mock data on error
-        return NextResponse.json({
-            stats: {
-                totalCommits: 1247,
-                totalPRs: 89,
-                totalStars: 234,
-                totalRepos: 42,
-                contributionDays: 365,
-                currentStreak: 47,
-                totalContributions: 2060,
-            },
-            contributions: generateMockContributions(),
-        });
+        // Return proper error response without fake stats
+        return NextResponse.json(
+            { error: "Failed to fetch genuine GitHub data" },
+            { status: 500 }
+        );
     }
-}
-
-function generateMockContributions() {
-    const contributions = [];
-    const today = new Date();
-    let totalCount = 0;
-
-    for (let i = 364; i >= 0; i--) {
-        const date = new Date(today);
-        date.setDate(date.getDate() - i);
-        const count = Math.floor(Math.random() * 15);
-        totalCount += count;
-        const level = count === 0 ? 0 : count < 3 ? 1 : count < 6 ? 2 : count < 10 ? 3 : 4;
-
-        contributions.push({
-            date: date.toISOString().split("T")[0],
-            count,
-            level,
-        });
-    }
-
-    return contributions;
 }
 
 function calculateStreak(contributions: any[]) {

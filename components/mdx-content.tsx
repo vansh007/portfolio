@@ -53,10 +53,10 @@ const Callout = ({ type = "info", children }: CalloutProps) => {
 const mdxComponents = {
     // Headings
     h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-        <h1 className="scroll-mt-24 text-4xl md:text-5xl font-bold mb-6 mt-10 leading-tight text-foreground" {...props} />
+        <h1 className="scroll-mt-24 text-[42px] md:text-[54px] font-serif font-normal mb-6 mt-10 leading-[1.1] text-foreground" {...props} />
     ),
     h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-        <h2 className="scroll-mt-24 text-3xl md:text-4xl font-bold mb-5 mt-12 pb-2 border-b border-border leading-snug text-foreground" {...props} />
+        <h2 className="scroll-mt-24 text-[26px] md:text-[30px] font-serif font-normal mb-5 mt-[60px] pb-2 text-foreground" {...props} />
     ),
     h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
         <h3 className="scroll-mt-24 text-2xl md:text-3xl font-semibold mb-4 mt-10 leading-snug text-foreground" {...props} />
@@ -73,7 +73,7 @@ const mdxComponents = {
 
     // Paragraphs
     p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-        <p className="text-lg md:text-xl leading-8 md:leading-9 mb-8 text-foreground/90 font-serif tracking-wide" {...props} />
+        <p className="text-[17px] font-sans font-light leading-[1.85] mb-8 text-[#c8c5be]" {...props} />
     ),
 
     // Lists
@@ -87,7 +87,7 @@ const mdxComponents = {
 
     // Blockquotes
     blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
-        <blockquote className="border-l-[3px] border-primary pl-6 py-2 my-10 italic text-xl md:text-2xl text-muted-foreground font-serif leading-relaxed" {...props} />
+        <blockquote className="border-l-[3px] border-primary pl-6 py-2 my-12 italic text-[22px] text-foreground font-serif leading-[1.6]" {...props} />
     ),
 
     // Code
@@ -144,7 +144,12 @@ const mdxComponents = {
         );
     },
 
-    hr: (props: React.HTMLAttributes<HTMLHRElement>) => <hr className="my-12 border-border" {...props} />,
+    hr: (props: React.HTMLAttributes<HTMLHRElement>) => (
+        <div className="my-[64px] flex items-center justify-center relative">
+            <hr className="w-full border-t border-border/50" />
+            <div className="absolute w-2 h-2 rounded-full bg-primary" />
+        </div>
+    ),
 
     // Tables
     table: (props: React.HTMLAttributes<HTMLTableElement>) => (

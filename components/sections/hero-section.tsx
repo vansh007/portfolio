@@ -192,9 +192,9 @@ export default function HeroSection() {
             </motion.h1>
 
             <motion.p variants={itemVariants} className="text-muted-foreground leading-relaxed max-w-lg">
-              I build interactive, scalable web apps and AI agents. Enthusiastic about
-              the future of <span className="text-foreground font-medium">Gen AI</span> and high-performance
-              distributed systems.
+              I’m Vansh Mundhra, a Computer Science student focused on building scalable backend systems, 
+              AI-driven applications, and cloud-native solutions. I work across distributed systems, 
+              machine learning, and Web3 to create efficient, real-world impactful technology. With experience in microservices, AWS, and intelligent system design, I enjoy turning complex ideas into practical, high-performance systems.
             </motion.p>
           </div>
         </div>

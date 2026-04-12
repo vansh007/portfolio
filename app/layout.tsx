@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -7,11 +7,18 @@ import { ThemeProvider } from "@/components/theme-provider";
 import ChatInterfaceWrapper from "@/components/chat-interface-wrapper";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { StarsCanvas } from "@/components/star-background";
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair",
 });
 
 // Enhanced SEO metadata
@@ -200,7 +207,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} font-sans antialiased min-h-screen bg-background text-foreground`}
+        className={`${inter.variable} ${playfair.variable} font-sans antialiased min-h-screen bg-background text-foreground`}
         suppressHydrationWarning
       >
         <GoogleAnalytics />
@@ -219,6 +226,7 @@ export default function RootLayout({
             Skip to main content
           </a>
 
+          <StarsCanvas />
           <Navbar />
 
           {/* Main content with semantic HTML and proper spacing */}

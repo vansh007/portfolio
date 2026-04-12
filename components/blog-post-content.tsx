@@ -42,7 +42,7 @@ export default function BlogPostContent({
                 <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-12">
                     {/* MAIN CONTENT */}
                     <motion.article
-                        className="w-full min-w-0"
+                        className="w-full min-w-0 max-w-[720px] mx-auto"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 0.6 }}

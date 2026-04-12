@@ -6,7 +6,7 @@ import BlogCard from '@/components/blog-card';
 export const metadata: Metadata = {
     title: 'Blog | Vansh Mundhra - Technical Articles & Project Deep Dives',
     description:
-        'In-depth technical articles about microservices, AI/ML, full-stack development, and software architecture',
+        'In-depth technical articles about microservices, AI/ML, and software architecture, New Technology and Intersection of Psychology and Science',
 };
 
 export default async function BlogPage() {
@@ -21,10 +21,10 @@ export default async function BlogPage() {
                 <FadeIn>
                     <div className="mb-12">
                         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                            vansh's Blog
+                            Vansh's Blog
                         </h1>
                         <p className="text-lg text-muted-foreground">
-                            Technical articles, tutorials, and insights
+                            Technical articles about New Technologies, AI/ML, and software architecture, and Intersection of Psychology and Science
                         </p>
                     </div>
                 </FadeIn>

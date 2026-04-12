@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Mail, Rss, MessageCircle, FileText, LucideIcon } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Rss, MessageCircle, FileText, Trophy, LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import { profileData } from "@/data/profile";
+
 interface SocialLink {
     icon: LucideIcon;
     href: string;
@@ -29,8 +31,13 @@ export default function FloatingNav() {
 
     const socialLinks: SocialLink[] = [
         {
+            icon: Trophy,
+            href: "/life",
+            label: "Life"
+        },
+        {
             icon: FileText,
-            href: "https://drive.google.com/file/d/10P4yO5DQGMqVUbvn6cG20FlxwBycdY15/view?usp=drive_link",
+            href: profileData.resume || "#",
             label: "Resume",
 
         },
