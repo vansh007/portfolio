@@ -19,7 +19,6 @@ import {
     SiLangchain,
     SiGooglegemini,
     SiDocker,
-    SiAmazon,
     SiGit,
     SiPostman,
     SiLinux,
@@ -40,7 +39,7 @@ import {
     SiElasticsearch,
     SiTrpc,
 } from "react-icons/si";
-import { FaServer, FaRobot, FaAnchor, FaMobileAlt, FaDatabase, FaCode } from "react-icons/fa";
+import { FaServer, FaRobot, FaAnchor, FaMobileAlt, FaDatabase, FaCode, FaAws } from "react-icons/fa";
 
 export const techIcons: Record<string, any> = {
     // Languages
@@ -125,7 +124,7 @@ export const techIcons: Record<string, any> = {
 
     // DevOps & Cloud
     "Docker": SiDocker,
-    "AWS": SiAmazon,
+    "AWS": FaAws,
     "Vercel": SiNextdotjs,
     "Linux": SiLinux,
     "Git": SiGit,
