@@ -8,7 +8,7 @@ import * as random from "maath/random/dist/maath-random.esm";
 import { useTheme } from "next-themes";
 
 const StarBackground = (props: any) => {
-  const ref = useRef<any>();
+  const ref = useRef<any>(null);
   // Generate random points in a sphere, memoizing prevents recreation on render
   const sphere = useMemo(() => random.inSphere(new Float32Array(5000), { radius: 1.5 }) as Float32Array, []);
   const { theme } = useTheme();
