@@ -11,6 +11,7 @@ import { techIcons } from "@/lib/tech-icons";
 import { useState } from "react";
 import VisitorCounter from "../visitor-counter";
 import { PortfolioTimer } from "@/components/portfolio-timer";
+import { profileData } from "@/data/profile";
 
 // Enhanced tech stack
 const techStack = [
@@ -210,7 +211,7 @@ export default function HeroSection() {
               View Work
             </Button>
           </Link>
-          <a href="https://cal.com/vansh-mundhra" target="_blank" rel="noopener noreferrer">
+          <a href={profileData.calLink} target="_blank" rel="noopener noreferrer">
             <Button size="sm" variant="outline" className="rounded-full px-5 font-semibold border-border/50">
               Book Call
             </Button>
