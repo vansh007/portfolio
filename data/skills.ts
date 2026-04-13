@@ -13,12 +13,12 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "2",
     title: "Frontend",
-    skills: ["React", "Next.js", "Tailwind CSS", "Shadcn", "React Native", "Expo", "Redux", "Zustand", "React Query", "Framer Motion"]
+    skills: ["React", "Next.js", "Tailwind CSS", "Shadcn", "Framer Motion"]
   },
   {
     id: "3",
     title: "Backend",
-    skills: ["Node.js", "Express", "FastAPI", "NestJS", "Gin", "Socket", "Supabase", "PSQL", "Prisma", "MongoDB", "GraphQL"]
+    skills: ["Node.js", "Express", "FastAPI", "NestJS", "Socket", "Supabase", "MySQL", "Prisma", "MongoDB", "GraphQL"]
   },
   {
     id: "4",
@@ -33,7 +33,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "7",
     title: "Blockchain / Web3",
-    skills: ["Solana", "Anchor", "Smart Contracts", "Web3.js", "Rust", "Solana Wallet Adapter"]
+    skills: ["Ethereum", "Wagmi", "Viem", "Solana", "Anchor", "Smart Contracts", "Web3.js", "Rust"]
   },
 
 

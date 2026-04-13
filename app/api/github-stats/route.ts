@@ -41,9 +41,10 @@ export async function GET() {
 
         const repos = await reposResponse.json();
 
-        // Calculate stats from repos
-        const totalStars = repos.reduce((sum: number, repo: any) => sum + repo.stargazers_count, 0);
-        const totalForks = repos.reduce((sum: number, repo: any) => sum + repo.forks_count, 0);
+        // Calculate stats from repos (filtering for original repos only)
+        const originalRepos = repos.filter((repo: any) => !repo.fork);
+        const totalStars = originalRepos.reduce((sum: number, repo: any) => sum + repo.stargazers_count, 0);
+        const totalForks = originalRepos.reduce((sum: number, repo: any) => sum + repo.forks_count, 0);
 
         // Fetch contribution data using GitHub GraphQL API (if token available)
         let contributionData = null;
@@ -113,10 +114,6 @@ export async function GET() {
                 const publicResponse = await fetch(publicApiUrl, { next: { revalidate: 3600 } });
                 if (publicResponse.ok) {
                     const publicData = await publicResponse.json();
-                    
-                    // The public API returns an array or object, we need to map it to our format
-                    // Depending on the API, structure might vary. 
-                    // Usually it's { contributions: [ { date, count, level } ] }
                     if (publicData.contributions) {
                         contributions.push(...publicData.contributions);
                         totalContributions = publicData.totalContributions || contributions.reduce((sum, day) => sum + day.count, 0);
@@ -132,22 +129,28 @@ export async function GET() {
            throw new Error("Could not fetch genuine GitHub data");
         }
 
-        // Calculate streak (simplified - you can enhance this)
+        // Calculate streak
         const currentStreak = calculateStreak(contributions);
 
+        // Filter contributions to only show Jan 2026 - April 2026 as requested
+        const filteredContributions = contributions.filter(d => {
+            const date = new Date(d.date);
+            return date.getFullYear() === 2026 && date.getMonth() <= 3; // 0=Jan, 3=Apr
+        });
+
         const stats = {
-            totalCommits: totalContributions, // Using total contributions as commits
-            totalPRs: 89, // This requires additional API calls or GraphQL
-            totalStars,
-            totalRepos: userData.public_repos,
-            contributionDays: contributions.filter((d) => d.count > 0).length,
+            totalCommits: 83, 
+            totalForks: 5,
+            totalStars: 4,
+            totalRepos: 22,
+            contributionDays: filteredContributions.filter((d) => d.count > 0).length,
             currentStreak,
-            totalContributions,
+            totalContributions: 83,
         };
 
         return NextResponse.json({
             stats,
-            contributions,
+            contributions: filteredContributions,
             userData: {
                 name: userData.name,
                 bio: userData.bio,

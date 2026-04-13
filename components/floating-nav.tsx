@@ -31,11 +31,6 @@ export default function FloatingNav() {
 
     const socialLinks: SocialLink[] = [
         {
-            icon: Trophy,
-            href: "/life",
-            label: "Life"
-        },
-        {
             icon: FileText,
             href: profileData.resume || "#",
             label: "Resume",
@@ -68,6 +63,11 @@ export default function FloatingNav() {
             icon: Mail,
             href: "mailto:vanshmundhra10may@gmail.com",
             label: "Email"
+        },
+        {
+            icon: Trophy,
+            href: "/life",
+            label: "Life"
         },
         {
             icon: Rss,

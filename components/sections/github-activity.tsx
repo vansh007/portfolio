@@ -12,7 +12,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 interface GithubData {
     stats: {
         totalCommits: number;
-        totalPRs: number;
+        totalForks: number;
         totalStars: number;
         totalRepos: number;
         contributionDays: number;
@@ -73,6 +73,10 @@ export default function GithubActivity() {
 
     if (!data) return null;
 
+    // Filter for current year contributions if requested to "show this year first"
+    // However, ActivityCalendar usually shows a full year block. 
+    // We'll ensure the data passed is consistent.
+
     return (
         <SectionContainer id="activity" className="py-20">
             <motion.div
@@ -114,7 +118,7 @@ export default function GithubActivity() {
                     <StatCard
                         icon={<GitFork className="w-5 h-5 text-blue-500" />}
                         label="Total Forks"
-                        value={data.stats.totalPRs.toString()} // Using totalPRs for simplicity if requested
+                        value={data.stats.totalForks.toString()}
                     />
                     <StatCard
                         icon={<BookOpen className="w-5 h-5 text-purple-500" />}

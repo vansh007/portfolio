@@ -25,7 +25,7 @@ export const profileData: ProfileData = {
   phone: "+91 9098660071",
   location: "Chennai, India",
   avatar: "/profile.jpg",
-  resume: "https://drive.google.com/file/d/1Veo9BgGlwh539JXPqQXGnblqJyTRO23k/view?usp=sharing",
+  resume: "https://drive.google.com/file/d/1Veo9BgGlwh539JXPqQXGnblqJyTRO23k/view?usp=drive_link",
   calLink: "https://cal.com/vansh-mundhra-lricat",
   socialLinks: [
     {

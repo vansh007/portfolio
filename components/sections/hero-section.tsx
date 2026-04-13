@@ -174,7 +174,7 @@ export default function HeroSection() {
 
           <div className="space-y-4">
             <motion.h1 variants={itemVariants} className="text-3xl md:text-4xl font-bold tracking-tight">
-              Hi, I&apos;m vansh <span className="text-muted-foreground/50">—</span>
+              Hi, I&apos;m Vansh Mundhra <span className="text-muted-foreground/50">—</span>
               <br />
               <span className="text-sidebar-primary italic">
 

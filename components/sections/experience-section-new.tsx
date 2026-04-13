@@ -33,7 +33,7 @@ const ExperienceSection = () => {
             <SectionHeader
                 label="Experience"
                 title="Professional Journey"
-                description="My work background in software engineering, AI, and full-stack development."
+                description="My work background in software engineering, AI/ML, blockchain, and full-stack development."
             />
 
             <div className="space-y-4">
